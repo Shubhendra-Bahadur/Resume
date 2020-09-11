@@ -18,8 +18,6 @@ for (var i = 0; i < navbarAtag.length; i++) {
     })
 }
 
-//-----------skill bar section-------------------//
-
 //handle scroll event on window
 //check that skill section or say container is visible or not
 //ensure that initial width of coloured skill divs is zero->initiakised/reset to 0 width value
@@ -30,7 +28,7 @@ var skillprogress=document.querySelectorAll(".skill-progress > div");
 var skillcontainer=document.getElementById('skill-container')
 console.log(skillprogress[0])
 window.addEventListener('scroll',checkscroll);
-var skillanimationcounter=0;
+var skillanimationcounter=false;
 
 function initializeskillbar()
 {
@@ -46,11 +44,15 @@ initializeskillbar();
 function checkscroll()
 {
   var coordinate=skillcontainer.getBoundingClientRect();
-  if(skillanimationcounter==0 && coordinate.top<window.innerHeight)
+  if(skillanimationcounter==false && coordinate.top<window.innerHeight)
     { 
-      skillanimationcounter++;
+      skillanimationcounter=true;
      	fillbars(); 
     }
+  	else if(coordinate.top>window.innerHeight)
+      {
+        skillanimationcounter=false;
+      }
 }
 
 
@@ -60,7 +62,7 @@ function fillbars()
       {
         let widthvalue=bar.getAttribute("data-bar-width");
         let currentwidth=0;
-	let interval=setInterval(function(){
+				let interval=setInterval(function(){
           if(currentwidth>widthvalue)
             {
               clearInterval(interval);
@@ -68,9 +70,13 @@ function fillbars()
             }
           currentwidth+=5;
           bar.style.width=currentwidth+"%";
-        },30);
+        },20);
       }
 }
+
+
+
+
 
 
 
