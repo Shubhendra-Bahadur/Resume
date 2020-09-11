@@ -60,7 +60,7 @@ function fillbars()
       {
         let widthvalue=bar.getAttribute("data-bar-width");
         let currentwidth=0;
-				let interval=setInterval(function(){
+	let interval=setInterval(function(){
           if(currentwidth>widthvalue)
             {
               clearInterval(interval);
