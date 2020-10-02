@@ -18,12 +18,6 @@ for (var i = 0; i < navbarAtag.length; i++) {
     })
 }
 
-//handle scroll event on window
-//check that skill section or say container is visible or not
-//ensure that initial width of coloured skill divs is zero->initiakised/reset to 0 width value
-//start animation on every skill->increase skill width from 0-skill levelat regular interval
-//store skill level->html with the help data attribute
-
 var skillprogress=document.querySelectorAll(".skill-progress > div");
 var skillcontainer=document.getElementById('skill-container')
 console.log(skillprogress[0])
@@ -73,6 +67,33 @@ function fillbars()
         },20);
       }
 }
+
+// drop down list
+
+var click=true;
+var barr=document.getElementsByClassName("bars")[0];
+barr.addEventListener('click',function(){
+   var dr=document.getElementsByClassName('dropdown-list');
+  	dr=dr[0];
+    if(click===true)
+    {
+      console.log(click);
+    	dr.style.display='block';
+    	dr.style.position='absolute';
+    	dr.style.right='3%';
+      click=false;
+    }
+  	
+  	else if(click===false)
+      {
+        console.log(click);
+        dr.style.display='none';
+        click=true;
+      }
+})
+
+
+
 
 
 
